@@ -8,7 +8,7 @@ import android.util.Log;
 import com.lodz.android.core.utils.ToastUtils;
 
 /**
- * Created by Administrator on 2018/9/20.
+ * Created by LiarShi on 2018/9/20.
  *
  * 开机启动的广播
  */
@@ -16,7 +16,7 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         //  启动特定服务或者启动某个应用
-        Log.e("Lionet", "非羁押重点人员接收到开机启动的广播onReceive");
+        Log.e("Lionet", "APP保活接收到开机启动的广播onReceive");
         Intent startApp = context.getPackageManager().getLaunchIntentForPackage("com.liar.tsetkeeplive1");
         context.startActivity(startApp);
         ToastUtils.showLong(context,"接收到重启的广播");

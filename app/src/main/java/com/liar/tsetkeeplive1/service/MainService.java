@@ -143,11 +143,11 @@ public class MainService extends Service {
     }
 
     /**
-     * 开启获取定位信息的服务
+     * 开启服务
      **/
     public void starService() {
 
-        PrintLog.d(TAG, "在TencentLocationService开启双服务");
+        PrintLog.d(TAG, "开启服务");
         Intent service = new Intent(getApplication(), MainService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(service);

@@ -12,7 +12,7 @@ import com.liar.tsetkeeplive1.service.MainService;
 
 
 /**
- * 虚假的渠道服务，用于 api>18 开启前台服务
+ * 虚假渠道服务，用于 api>18 开启前台服务，隐藏前台通知
  */
 public class ChannelService extends Service {
     private static final String TAG = "ChannelService";

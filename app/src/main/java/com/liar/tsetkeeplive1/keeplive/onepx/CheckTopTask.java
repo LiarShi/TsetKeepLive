@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by Silence on 2016.12.31
+ * 用于开启一像素的Activity的线程
  */
 class CheckTopTask implements Runnable {
     private static final String TAG = "CheckTopTask";
@@ -16,16 +17,6 @@ class CheckTopTask implements Runnable {
 
     CheckTopTask(Context context) {
         this.context = context;
-    }
-
-    static void startForeground(Context context) {
-        try {
-            Intent intent = new Intent(context, OnePxActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        } catch (Exception e) {
-            Log.e(TAG, "e:", e);
-        }
     }
 
     @Override
@@ -37,6 +28,20 @@ class CheckTopTask implements Runnable {
         }
     }
 
+    //打开一像素的Activity
+    static void startForeground(Context context) {
+        try {
+            Intent intent = new Intent(context, OnePxActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "e:", e);
+        }
+    }
+
+
+
+    //判断
     private boolean isForeground(Context context) {
         try {
             ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);

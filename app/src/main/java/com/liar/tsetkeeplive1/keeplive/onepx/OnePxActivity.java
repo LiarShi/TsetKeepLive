@@ -2,6 +2,7 @@ package com.liar.tsetkeeplive1.keeplive.onepx;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -11,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.liar.tsetkeeplive1.service.MainService;
 import com.lodz.android.core.log.PrintLog;
 
 import java.lang.ref.WeakReference;
@@ -105,12 +107,13 @@ public class OnePxActivity extends Activity {
      **/
     public void starService() {
 
-        PrintLog.e(TAG, "在一像素界面开启定位服务");
-//
-//        if(!ServiceUtils.isServiceRunning(getApplication(),TencentLocationService.class.getName())){
-//            PrintLog.e(TAG, "TencentLocationService不存在，在一像素界面重新开启TencentLocationService");
-//            Intent locationService = new Intent(getApplication(), TencentLocationService.class);
-//            startService(locationService);
-//        }
+        PrintLog.e(TAG, "在一像素界面开启MainService");
+        Intent service = new Intent(getApplication(), MainService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(service);
+        }else {
+            startService(service);
+        }
     }
+
 }

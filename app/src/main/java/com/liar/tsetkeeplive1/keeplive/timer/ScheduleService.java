@@ -12,6 +12,10 @@ import com.liar.tsetkeeplive1.utils.service.ServiceUtils;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+/**
+ * JobService，定时服务用于唤醒MainService
+ */
+
 public class ScheduleService extends JobService {
     private static final String TAG = "ScheduleService";
 
@@ -22,7 +26,6 @@ public class ScheduleService extends JobService {
             Intent intent = new Intent(getApplicationContext(), MainService.class);
             startService(intent);
         }
-
         jobFinished(params, false);
         return false;
     }
